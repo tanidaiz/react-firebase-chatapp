@@ -8,10 +8,10 @@ const App = () => {
   useEffect(() => {
     messagesRef
       .orderByKey()
-      .limitToLast(10)
+      .limitToLast(5)
       .on("value", (snapshot) => {
         const messages = snapshot.val()
-        if (messages === null) return
+        if (!messages) return
         const entries = Object.entries(messages)
         const newMessages = entries.map((data) => {
           const [key, message] = data
